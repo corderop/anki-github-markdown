@@ -1,0 +1,12 @@
+[MASTER]
+jobs=4
+# ignore=
+
+[BASIC]
+good-names=python-skeleton
+
+[pre-commit-hook]
+command=custom_pylint
+max-line-length=120
+disable=E0401, C0301, C0114
+# include-naming-hint=yes
