@@ -1,2 +1,4 @@
+anki==2.1.54
+aqt==2.1.54
 pre-commit==2.20.0
 pytest==7.1.3
