@@ -1,4 +1,4 @@
-exclude: 'docs|node_modules|migrations|.git|.tox|.txt'
+exclude: 'docs|node_modules|migrations|.git|.tox'
 default_stages: [commit]
 fail_fast: true
 
