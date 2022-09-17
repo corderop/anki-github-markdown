@@ -3,11 +3,11 @@ from unittest.mock import MagicMock, patch
 import pytest
 import requests
 
-from markdown_converter.github import GithubMarkdownConverter
-from markdown_converter.github.errors import GithubException
+from markdown.converter.github import GithubMarkdownToHTMLConverter
+from markdown.converter.github.errors import GithubException
 
 
-class TestGithubMarkdownConverter:
+class TestGithubMarkdownToHTMLConverter:
     @patch.object(requests, "post")
     def test_github_markdown(self, mock_post):
         md_text = "# Hello"
@@ -21,7 +21,7 @@ class TestGithubMarkdownConverter:
         """
         mock_post.return_value = MagicMock(status_code=200, text=expected_html)
 
-        result = GithubMarkdownConverter().run(md_text)
+        result = GithubMarkdownToHTMLConverter().run(md_text)
 
         assert result == expected_html
 
@@ -29,7 +29,7 @@ class TestGithubMarkdownConverter:
     def test_github_markdown_empty(self, mock_post):
         mock_post.return_value = MagicMock(status_code=200, text="")
 
-        result = GithubMarkdownConverter().run("")
+        result = GithubMarkdownToHTMLConverter().run("")
 
         assert result == ""
 
@@ -43,7 +43,7 @@ class TestGithubMarkdownConverter:
         mock_post.return_value = MagicMock(status_code=400, text=response_text)
 
         with pytest.raises(GithubException) as e:
-            GithubMarkdownConverter().run(md_text)
+            GithubMarkdownToHTMLConverter().run(md_text)
             assert e.message == response_text
 
     @patch.object(requests, "post")
@@ -53,5 +53,5 @@ class TestGithubMarkdownConverter:
         mock_post.return_value = MagicMock(status_code=500, text=response_text)
 
         with pytest.raises(GithubException) as e:
-            GithubMarkdownConverter().run(md_text)
+            GithubMarkdownToHTMLConverter().run(md_text)
             assert e.message == response_text

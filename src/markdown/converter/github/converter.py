@@ -1,10 +1,9 @@
 import requests
 
-from ..abstract import MarkdownConverterService
 from .errors import GithubException
 
 
-class GithubMarkdownConverter(MarkdownConverterService):
+class GithubMarkdownToHTMLConverter:
     def run(self, md_text: str) -> str:
         response = requests.post(
             "https://api.github.com/markdown", json={"text": md_text}
