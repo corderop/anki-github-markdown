@@ -1,6 +1,8 @@
-import pytest
 from unittest.mock import MagicMock, patch
+
+import pytest
 import requests
+
 from markdown_converter.github import GithubMarkdownConverter
 from markdown_converter.github.errors import GithubException
 

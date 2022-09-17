@@ -1,1 +1,1 @@
-from .converter import GithubMarkdownConverter
+from .converter import GithubMarkdownConverter  # noqa
