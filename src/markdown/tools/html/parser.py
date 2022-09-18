@@ -31,6 +31,29 @@ class HTMLParserTools:
             raise InvalidHtmlProvidedForParsing
 
     @staticmethod
+    def exists_attribute_in_tag(tag: Tag, attribute: str) -> bool:
+        """Return True if the attribute exists in the tag.
+
+        Args:
+            tag (Tag): When the tag is None or is not HTML tag.
+            attribute (str): Name of the attribute to check
+
+        Raises:
+            InvalidTagProvided: If the
+            InvalidAttributeProvided: If the attribute is empty or None
+
+        Returns:
+            bool: True if the attribute exists in the tag. False otherwise.
+        """
+        if tag is None or type(tag) is not Tag:
+            raise InvalidTagProvided
+
+        if attribute is None or attribute == "":
+            raise InvalidAttributeProvided
+
+        return attribute in tag.attrs
+
+    @staticmethod
     def get_attributes_from_tag(tag: Tag, attribute: str) -> str:
         """Get an attribute form a tag.
 

@@ -163,3 +163,39 @@ class TestHTMLParserToolGetAttributesFromTag:
 
         with pytest.raises(InvalidAttributeProvided):
             HTMLParserTools.get_attributes_from_tag(tag, None)
+
+
+class TestHTMLParserToolExistsAttributeInTag:
+    def test_working_properly(self):
+        html = '<h1 md_content="content">Test</h1><a>Test</a>'
+        html_tree = BeautifulSoup(html, "html.parser")
+        tag = list(html_tree.children)[0]
+
+        result = HTMLParserTools.exists_attribute_in_tag(tag, "md_content")
+
+        assert result
+
+    def test_none_tag(self):
+        with pytest.raises(InvalidTagProvided):
+            HTMLParserTools.exists_attribute_in_tag(None, "md_content")
+
+    def test_tag_invalid_type(self):
+        with pytest.raises(InvalidTagProvided):
+            HTMLParserTools.exists_attribute_in_tag(
+                {"md_content": "content"}, "md_content"
+            )
+
+    def test_attribute_not_found(self):
+        html = "<h1>Test</h1><a>Test</a>"
+        html_tree = BeautifulSoup(html, "html.parser")
+        tag = list(html_tree.children)[0]
+
+        assert not HTMLParserTools.exists_attribute_in_tag(tag, "md_content")
+
+    def test_attribute_none(self):
+        html = "<h1>Test</h1><a>Test</a>"
+        html_tree = BeautifulSoup(html, "html.parser")
+        tag = list(html_tree.children)[0]
+
+        with pytest.raises(InvalidAttributeProvided):
+            HTMLParserTools.exists_attribute_in_tag(tag, None)
