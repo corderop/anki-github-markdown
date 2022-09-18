@@ -1,12 +1,12 @@
 import base64
 
-from markdown.ingestor.errors import EmptyHTMLProvided, InvalidHTMLProvided
-from markdown.tools.html import HTMLParserTools
-from markdown.tools.html.errors import (
+from ..tools.html import HTMLParserTools
+from ..tools.html.errors import (
     EmptyHtmlProvidedForParsing,
     NoFirstTagFound,
     TagNotFoundInHTML,
 )
+from .errors import EmptyHTMLProvided, InvalidHTMLProvided
 
 
 class MarkdownIntoHTMLIngestor:

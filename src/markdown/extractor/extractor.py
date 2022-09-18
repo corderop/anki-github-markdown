@@ -1,11 +1,8 @@
 import base64
 
-from markdown.extractor.errors import (
-    InvalidHTMLProvided,
-    MarkdownAttributeNotFoundInHTML,
-)
-from markdown.tools.html import HTMLParserTools
-from markdown.tools.html.errors import InvalidAttributeProvided, NoFirstTagFound
+from ..tools.html import HTMLParserTools
+from ..tools.html.errors import InvalidAttributeProvided, NoFirstTagFound
+from .errors import InvalidHTMLProvided, MarkdownAttributeNotFoundInHTML
 
 
 class MarkdownFromHTMLExtractor:
