@@ -55,3 +55,27 @@ class TestToggler:
         result = MarkdownToggler().run(text)
 
         assert result == expected
+
+    @mock_markdown_converter(
+        return_value="""
+            <h1>
+                <a id="user-content-test" class="anchor" aria-hidden="true" href="#test">
+                    <span aria-hidden="true" class="octicon octicon-link"></span>
+                </a>
+                Test
+            </h1>
+            <br>
+            <div class="highlight highlight-source-python">
+                <pre><span class="pl-en">print</span>(<span class="pl-s">"hello"</span>)</pre>
+            </div>
+        """
+    )
+    def test_reggression_test_with_multiples_lines_and_br(
+        self, markdown_converter_mock
+    ):
+        text = '# Test<br><br>&lt;br&gt;<br><br>```py<br>print("hello")<br>```'
+        expected = '# Test\n\n<br>\n\n```py\n\nprint("hello")\n\n```'
+
+        MarkdownToggler().run(text)
+
+        markdown_converter_mock.assert_called_with(expected)

@@ -1,8 +1,8 @@
-from markdown.converter import MarkdownToHTMLConverter
-from markdown.extractor.extractor import MarkdownFromHTMLExtractor
-from markdown.ingestor.ingestor import MarkdownIntoHTMLIngestor
-from markdown.tools.html import HTMLParserTools
-from markdown.tools.html.errors import NoFirstTagFound
+from .converter import MarkdownToHTMLConverter
+from .extractor.extractor import MarkdownFromHTMLExtractor
+from .ingestor.ingestor import MarkdownIntoHTMLIngestor
+from .tools.html import HTMLParserTools
+from .tools.html.errors import NoFirstTagFound
 
 
 class MarkdownToggler:
@@ -41,5 +41,6 @@ class MarkdownToggler:
         if self.__is_converted_html(text):
             return MarkdownFromHTMLExtractor().run(text)
         else:
-            html = MarkdownToHTMLConverter().run(text)
+            cleaned_html = HTMLParserTools(text).get_text_from_html()
+            html = MarkdownToHTMLConverter().run(cleaned_html)
             return MarkdownIntoHTMLIngestor().run(html, text)
