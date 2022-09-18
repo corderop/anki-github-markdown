@@ -24,3 +24,7 @@ class InvalidAttributeProvided(HTMLParserToolsException):
 
 class InvalidContentProvided(HTMLParserToolsException):
     pass
+
+
+class InvalidTagProvided(HTMLParserToolsException):
+    pass

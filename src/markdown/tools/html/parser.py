@@ -5,6 +5,7 @@ from .errors import (
     InvalidAttributeProvided,
     InvalidContentProvided,
     InvalidHtmlProvidedForParsing,
+    InvalidTagProvided,
     NoFirstTagFound,
     TagNotFoundInHTML,
 )
@@ -28,6 +29,32 @@ class HTMLParserTools:
         except Exception as e:
             print(f"Unexpected exception found while parsing HTML: {e}")
             raise InvalidHtmlProvidedForParsing
+
+    @staticmethod
+    def get_attributes_from_tag(tag: Tag, attribute: str) -> str:
+        """Get an attribute form a tag.
+
+        Args:
+            tag (Tag): Tag from the HTML tree, where the attribute is present.
+            attribute (str): Name of the attribute to get.
+
+        Raises:
+            InvalidTagProvided: When the tag is None or is not HTML tag.
+            InvalidAttributeProvided: If the attribute is empty or None or it is not found in the tag.
+
+        Returns:
+            str: content of the attribute.
+        """
+        if tag is None or type(tag) is not Tag:
+            raise InvalidTagProvided
+
+        if attribute is None or attribute == "":
+            raise InvalidAttributeProvided
+
+        try:
+            return tag[attribute]
+        except KeyError:
+            raise InvalidAttributeProvided
 
     def find_first_tag(self) -> Tag:
         """Find the first tag in the HTML tree.
