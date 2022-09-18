@@ -17,11 +17,12 @@ EOM
 }
 
 delete_addon_folder () {
-    printf "Deleting addon folder...\n"
+    printf "Deleting addon folder if exists...\n"
     rm -rf "$ANKI_ADDONS_FOLDER/$ADDON_FOLDER_NAME"
 }
 
 create_symlink () {
+    delete_addon_folder
     printf "Creating symlink to anki folder...\n"
     ln -s "$PWD/src/" "$ANKI_ADDONS_FOLDER/$ADDON_FOLDER_NAME"
 }
