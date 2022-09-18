@@ -141,3 +141,12 @@ class HTMLParserTools:
             str: HTML tree as a string.
         """
         return str(self.tree)
+
+    def get_text_from_html(self) -> str:
+        """Get the visible text from the HTML.
+
+        Returns:
+            str: Visible text splitted by two break lines.
+        """
+        text = self.tree.find_all(text=True)
+        return "\n\n".join(text)

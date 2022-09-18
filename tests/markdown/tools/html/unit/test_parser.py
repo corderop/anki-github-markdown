@@ -199,3 +199,13 @@ class TestHTMLParserToolExistsAttributeInTag:
 
         with pytest.raises(InvalidAttributeProvided):
             HTMLParserTools.exists_attribute_in_tag(tag, None)
+
+
+class TestHTMLParserToolGetTextFromHTML:
+    def test_clean_break_lines(self):
+        html = '# Test<br><br>&lt;br&gt;<br><br>```py<br>print("hello")<br>```'
+        expected = '# Test\n\n<br>\n\n```py\n\nprint("hello")\n\n```'
+
+        result = HTMLParserTools(html).get_text_from_html()
+
+        assert result == expected
