@@ -148,5 +148,5 @@ class HTMLParserTools:
         Returns:
             str: Visible text splitted by two break lines.
         """
-        text = self.tree.find_all(text=True)
+        text = self.tree.find_all(string=True)
         return "\n\n".join(text)
