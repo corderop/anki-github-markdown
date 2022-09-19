@@ -148,5 +148,16 @@ class HTMLParserTools:
         Returns:
             str: Visible text splitted by two break lines.
         """
+
+        # If <br/> represents an empty line, bs4 will not add a new line
+        # In order not to be considered as an empty line, we add empty spaces
+        # and then we remove them
+        raw_html = str(self.tree)
+        raw_html = raw_html.replace("<br/>", "&nbsp;<br/>").replace(
+            "<br>", "&nbsp;<br/>"
+        )
+        self.tree = BeautifulSoup(raw_html, "html.parser")
+
         text = self.tree.find_all(string=True)
-        return "\n\n".join(text)
+        text = [t.replace("\xa0", " ").rstrip() for t in text]
+        return "\n".join(text)

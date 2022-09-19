@@ -204,7 +204,26 @@ class TestHTMLParserToolExistsAttributeInTag:
 class TestHTMLParserToolGetTextFromHTML:
     def test_clean_break_lines(self):
         html = '# Test<br><br>&lt;br&gt;<br><br>```py<br>print("hello")<br>```'
-        expected = '# Test\n\n<br>\n\n```py\n\nprint("hello")\n\n```'
+        expected = '# Test\n\n<br>\n\n```py\nprint("hello")\n```'
+
+        result = HTMLParserTools(html).get_text_from_html()
+
+        assert result == expected
+
+    def test_working_with_code(self):
+        html = (
+            "Will this code raise a transpilation error?"
+            "<br><br>"
+            "```ts<br>"
+            "<div><div><div>"
+            "interface Song {</div><div>&nbsp; &nbsp; artistName: string;</div><div>};"
+            "</div></div></div>"
+            "```"
+        )
+        expected = (
+            "Will this code raise a transpilation error?"
+            "\n\n```ts\ninterface Song {\n    artistName: string;\n};\n```"
+        )
 
         result = HTMLParserTools(html).get_text_from_html()
 

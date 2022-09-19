@@ -74,7 +74,7 @@ class TestToggler:
         self, markdown_converter_mock
     ):
         text = '# Test<br><br>&lt;br&gt;<br><br>```py<br>print("hello")<br>```'
-        expected = '# Test\n\n<br>\n\n```py\n\nprint("hello")\n\n```'
+        expected = '# Test\n\n<br>\n\n```py\nprint("hello")\n```'
 
         MarkdownToggler().run(text)
 
