@@ -30,8 +30,9 @@ class EditorButton:
             return
 
         current_html = self.__get_current_field_html()
-        modified_html = MarkdownToggler().run(current_html)
-        self.__set_current_field_html(modified_html)
+        if current_html:
+            modified_html = MarkdownToggler().run(current_html)
+            self.__set_current_field_html(modified_html)
 
     def __get_current_field_html(self) -> str:
         """Get HTML of the active field.
