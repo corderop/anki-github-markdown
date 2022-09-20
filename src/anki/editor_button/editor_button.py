@@ -29,6 +29,9 @@ class EditorButton:
         if self.field_id is None:
             return
 
+        self.editor.call_after_note_saved(self.__get_and_toggle_note)
+
+    def __get_and_toggle_note(self) -> None:
         current_html = self.__get_current_field_html()
         if current_html:
             modified_html = MarkdownToggler().run(current_html)
