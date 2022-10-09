@@ -5,7 +5,7 @@ on:
       - main
   pull_request:
     branches:
-      - '*'
+      - "*"
 jobs:
   building_and_testing:
     name: 🏗️ Building and 🧪 Testing
