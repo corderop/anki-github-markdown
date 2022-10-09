@@ -1,6 +1,6 @@
 # CSS Files
 
-This directory contains CSS for your Anki cards. This CSS applied to the converted Markdown created by GitHub will make your cards look awesome.
+This directory contains CSS for your Anki cards. Applying CSS to the converted Markdown created by GitHub will make your cards look fantastic.
 
 ## How to use
 
@@ -14,4 +14,4 @@ This directory contains CSS for your Anki cards. This CSS applied to the convert
 
 ## Contributing
 
-We are open to have different styles for the cards. Don't hesitate to create a pull request with your own style. We will be happy to introduce it here.
+We are open to having different styles for the cards. So don't hesitate to create a pull request with your style. We will be happy to introduce it here.

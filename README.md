@@ -10,6 +10,10 @@ This addon allows you to create cards using Markdown. It will use the GitHub API
     <img style="margin: 0; width: 584px; height: 700px; " src="./docs/images/demo.gif"/>
 </p>
 
+## Use our cards
+
+If you want to make the most of this use, we strongly recommend you use our cards. You can find them in this repository's [`css` folder](./css). There is more information about how to use them in the README of this folder.
+
 ## Development and contributing
 
 Please, consider read the [CONTRIBUTING.md](CONTRIBUTING.md) before submit a PR.
