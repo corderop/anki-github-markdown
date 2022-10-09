@@ -5,4 +5,4 @@ __pycache__/
 .pytest_cache
 
 # Anki files
-.zip
+*.zip
