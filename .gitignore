@@ -3,3 +3,6 @@
 # Cache
 __pycache__/
 .pytest_cache
+
+# Anki files
+.zip
